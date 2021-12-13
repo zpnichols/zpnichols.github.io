@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Zach Nichols and Bootstrap">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>CS7290 Final | Locations</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbar-static/">
+
+    <!-- Bootstrap core CSS -->
+<link href="bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      #map {
+        height: 180px;
+      }
+      #observablehq-map-20cbd282 {
+        height: 180px;
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+  </head>
+  <body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CS7290 Final</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Locations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="institutions.html">Institutions</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="bg-light p-5 rounded">
+    <h1>CS7290 Final Project</h1>
+    <p class="lead">Maine Bank location and <a href="institution.html">institution-level</a> data explorer.</p>
+    <p>Made possible with the <a href="https://banks.data.fdic.gov/docs/">FDIC BankFind API suite</a>, <a href="https://observablehq.com">Observable</a>, and <a href="https://leafletjs.com/">Leaflet</a>.</p>
+  </div>
+  <h2>Locations</h2>
+  <div class="row">
+    <div class="col" id="observablehq-viewof-selectedBanks-8bca6624"></div>
+    <div class="col-md-8" id="observablehq-locationTable-8bca6624"></div>
+  </div>
+  <div class="row">
+    <div class="col" id="observablehq-viewof-establishedBy-8bca6624"></div>
+    <div class="col-md-8" id="observablehq-selected-8bca6624"></div>
+  </div>
+  <div class="row">
+    <div id="observablehq-selectedLocations-89430c3e"></div>
+  </div>
+  <div id="observablehq-container-8bca6624"></div>
+
+  <div class="d-none" id="map"></div>
+
+  <div class="d-none" id="observablehq-bankTable-8bca6624"></div>
+  <div class="d-none" id="observablehq-viewof-filteredTable-8bca6624"></div>
+
+  <div class="row">
+    <div class="col-md-3 d-none" id="observablehq-viewof-deposits-8bca6624"></div>
+    <div class="col-md-3 d-none" id="observablehq-viewof-assets-8bca6624"></div>
+    <div class="col-md-3 d-none" id="observablehq-viewof-netincome-8bca6624"></div>
+    <div class="col-md-3 d-none" id="observablehq-viewof-roa-8bca6624"></div>
+  </div>
+  <div class="d-none" id="observablehq-depositchart-8bca6624"></div>
+  <div class="d-none" id="observablehq-assetchart-8bca6624"></div>
+  <div class="d-none" id="observablehq-netincomechart-8bca6624"></div>
+  <div class="d-none" id="observablehq-roachart-8bca6624"></div>
+  <div class="d-none" id="observablehq-officechart-8bca6624"></div>
+
+</main>
+    <script src="bootstrap.bundle.min.js"></script>
+  </body>
+  <footer>
+    <div class="container-fluid"><h5>Northeastern University, Fall 2021</h5></div>
+    <div class="container-fluid"><p>Observable data: <a href="https://observablehq.com/@zpnichols/cs7290-final-project">CS7290 Final by Zach Nichols</a></p></div>
+    <div class="container-fluid"><a id="bottom" href="#top">Jump to top</a></div>
+  </footer>
+  <script type="module">
+  import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+  import define from "https://api.observablehq.com/@zpnichols/cs7290-final-project.js?v=3";
+  const main = new Runtime().module(define, name => {
+    if (name === "viewof selectedBanks") return new Inspector(document.querySelector("#observablehq-viewof-selectedBanks-8bca6624"));
+    if (name === "selected") return new Inspector(document.querySelector("#observablehq-selected-8bca6624"));
+    if (name === "viewof establishedBy") return new Inspector(document.querySelector("#observablehq-viewof-establishedBy-8bca6624"));
+    if (name === "locationTable") return new Inspector(document.querySelector("#observablehq-locationTable-8bca6624"));
+    if (name === "selectedLocations") return new Inspector(document.querySelector("#observablehq-selectedLocations-89430c3e"));
+    if (name === "container") return new Inspector(document.querySelector("#observablehq-container-8bca6624"));
+    if (name === "map") return new Inspector(document.querySelector("#map"));
+    if (name === "bankTable") return new Inspector(document.querySelector("#observablehq-bankTable-8bca6624"));
+    if (name === "viewof filteredTable") return new Inspector(document.querySelector("#observablehq-viewof-filteredTable-8bca6624"));
+    if (name === "viewof deposits") return new Inspector(document.querySelector("#observablehq-viewof-deposits-8bca6624"));
+    if (name === "viewof assets") return new Inspector(document.querySelector("#observablehq-viewof-assets-8bca6624"));
+    if (name === "viewof netincome") return new Inspector(document.querySelector("#observablehq-viewof-netincome-8bca6624"));
+    if (name === "viewof roa") return new Inspector(document.querySelector("#observablehq-viewof-roa-8bca6624"));
+    if (name === "depositchart") return new Inspector(document.querySelector("#observablehq-depositchart-8bca6624"));
+    if (name === "assetchart") return new Inspector(document.querySelector("#observablehq-assetchart-8bca6624"));
+    if (name === "netincomechart") return new Inspector(document.querySelector("#observablehq-netincomechart-8bca6624"));
+    if (name === "roachart") return new Inspector(document.querySelector("#observablehq-roachart-8bca6624"));
+    if (name === "officechart") return new Inspector(document.querySelector("#observablehq-officechart-8bca6624"));
+    if (name === "responsive") return true;
+    return ["selectedBanksParam","institutions_url","banks","bankData","bankTable","filteredBanks","fbanks","fcolors","missing","missingCerts","locations_url","locations","geojson","overlay","colorScale","establishedByDate"].includes(name);
+  });
+  </script>
+
+<script>
+    const resetWidth = () => main.redefine("width", document.getElementById("#map").offsetWidth);
+    resetWidth();
+    window.onresize = resetWidth;
+</script>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
+</html>
